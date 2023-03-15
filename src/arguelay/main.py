@@ -26,6 +26,8 @@ import sys
 
 from arguelay import __version__
 
+from . import lib
+
 __author__ = "Taylor Monacelli"
 __copyright__ = "Taylor Monacelli"
 __license__ = "MIT"
@@ -38,22 +40,6 @@ _logger = logging.getLogger(__name__)
 # Python scripts/interactive interpreter, e.g. via
 # `from arguelay.skeleton import fib`,
 # when using this Python module as a library.
-
-
-def fib(n):
-    """Fibonacci example function
-
-    Args:
-      n (int): integer
-
-    Returns:
-      int: n-th Fibonacci number
-    """
-    assert n > 0
-    a, b = 1, 1
-    for _i in range(n - 1):
-        a, b = b, a + b
-    return a
 
 
 # ---- CLI ----
@@ -78,7 +64,6 @@ def parse_args(args):
         action="version",
         version="arguelay {ver}".format(ver=__version__),
     )
-    parser.add_argument(dest="n", help="n-th Fibonacci number", type=int, metavar="INT")
     parser.add_argument(
         "-v",
         "--verbose",
@@ -104,9 +89,14 @@ def setup_logging(loglevel):
     Args:
       loglevel (int): minimum loglevel for emitting messages
     """
-    logformat = "[%(asctime)s] %(levelname)s:%(name)s:%(message)s"
+    logformat = "{%(filename)s:%(lineno)d} %(levelname)s - %(message)s"
     logging.basicConfig(
-        level=loglevel, stream=sys.stdout, format=logformat, datefmt="%Y-%m-%d %H:%M:%S"
+        level=loglevel,
+        format=logformat,
+        handlers=[
+            # logging.FileHandler(f"{package}.log"),
+            logging.StreamHandler(sys.stdout),
+        ],
     )
 
 
@@ -123,7 +113,7 @@ def main(args):
     args = parse_args(args)
     setup_logging(args.loglevel)
     _logger.debug("Starting crazy calculations...")
-    print("The {}-th Fibonacci number is {}".format(args.n, fib(args.n)))
+    lib.main()
     _logger.info("Script ends here")
 
 
