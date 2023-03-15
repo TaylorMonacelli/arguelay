@@ -182,14 +182,12 @@ def main(args):
         "win/0.5.3.1/streambox_iris_win.zip",
         "win/1.0.1.0/streambox_iris_win.zip",
         "win/1.0.1.1/streambox_iris_win.zip",
-        "win/1.1.1.1/streambox_iris_win.zip",
         "win/1.2.0.0/streambox_iris_win.zip",
         "win/1.3.0.0/streambox_iris_win.zip",
         "win/1.4.0.0/streambox_iris_win.zip",
         "win/1.5.0.0/streambox_iris_win.zip",
         "win/1.6.0.0/streambox_iris_win.zip",
         "win/1.7.0.0/streambox_iris_win.zip",
-        "win/1.7.1.0/streambox_iris_win.zip",
         "win/1.8.0.0/streambox_iris_win.zip",
         "win/1.9.0.0/streambox_iris_win.zip",
         "win/1.10.0.0/streambox_iris_win.zip",
@@ -209,7 +207,7 @@ def main(args):
         "win/1.24.0.0/streambox_iris_win.zip",
         "win/1.25.0.0/streambox_iris_win.zip",
         "win/1.26.0.0/streambox_iris_win.zip",
-        "win/1.26.1.0/streambox_iris_win.zip",
+        "win/1.27.0.0/streambox_iris_win.zip",
     ]
 
     paths = ["latest/win/streambox_iris_win.zip"] + paths
