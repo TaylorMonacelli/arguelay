@@ -85,7 +85,7 @@ def parse_args(args):
         "--filter-versions",
         help="limit install to just these versions, eg 1.15.0.0, 1.20.0.0, etc. ",
         action="append",
-        required=True,
+        required=False,
     )
     return parser.parse_args(args)
 

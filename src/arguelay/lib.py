@@ -229,7 +229,10 @@ def main(args):
 
     paths = ["latest/win/streambox_iris_win.zip"] + paths
     all = []
-    for version in args.filter_versions:
+
+    filters = ["."] if not args.filter_versions else args.filter_versions
+
+    for version in filters:
         _logger.debug(f"{version=}")
         for path in paths:
             result = filter_path_from_version(path, version)
