@@ -80,6 +80,13 @@ def parse_args(args):
         action="store_const",
         const=logging.DEBUG,
     )
+    parser.add_argument(
+        "-f",
+        "--filter-versions",
+        help="limit install to just these versions, eg 1.15.0.0, 1.20.0.0, etc. ",
+        action="append",
+        required=True,
+    )
     return parser.parse_args(args)
 
 
@@ -113,7 +120,7 @@ def main(args):
     args = parse_args(args)
     setup_logging(args.loglevel)
     _logger.debug("Starting crazy calculations...")
-    lib.main()
+    lib.main(args)
     _logger.info("Script ends here")
 
 
