@@ -107,11 +107,9 @@ def generate_install_cmd(s3_path_fragment: str):
     log.setup_logging()
     url_base = get_var("VAR_ARGUELAY_S3_HTTPS_URL_BASE")
 
-    # url_parse = urllib.parse.urlparse(url_base)
     path = s3_path_fragment
     url = construct_url(url_base, path)
     version = get_version(url)
-    # url_parse = urllib.parse.urlparse(url)
 
     local_zip_path = data_path / version / pathlib.Path(url).name
 
@@ -225,7 +223,7 @@ def main(args):
     _logger.debug(all)
 
     for path in all:
-        cmd = generate_install_cmd(path)
+        cmd = generate_install_cmd(path).strip()
         print(cmd)
 
 
